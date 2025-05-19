@@ -4,20 +4,20 @@
 
 2. Triple angle brackets mark a call from the host thread to the code on the device side. A kernel is executed by an array of threads and all threads run the same code. The parameters within the triple angle brackets are the execution confi guration, which specifi es how many threads will execute the kernel. In the following example, it will run 10 GPU threads
 
-```c
-#include <iostream>
+     ```c
+     #include <iostream>
 
-__global__ void kernel(){
-     printf("From the GPU\n");
-}
+     __global__ void kernel(){
+          printf("From the GPU\n");
+     }
 
-int main()
-{
-     kernel<<<1,10>>>();
-     cudaDeviceReset();
-     return 0;
-}
-```
+     int main()
+     {
+          kernel<<<1,10>>>();
+          cudaDeviceReset();
+          return 0;
+     }
+     ```
 
 3. `cudaDeviceReset()` will explicitly destroy and clean up all resources associated with
 the current device in the current process.
