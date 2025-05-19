@@ -9,5 +9,6 @@ __global__ void kernel(){
 int main()
 {
      kernel<<<1,10>>>();
+     cudaDeviceReset();
      return 0;
 }
