@@ -9,7 +9,7 @@ Programming models present an abstraction of computer architectures that act as 
 
 The **communication abstraction** is the boundary between the program and the programming model implementation, which is realized through a compiler or libraries using privileged hardware primitives and the operating system.
 
-![figure-1](p_model.png)
+![figure-1](./img/p_model.png)
 
 **CUDA PROGRAMMING MODEL** provides specific features:
 
@@ -53,7 +53,7 @@ variable `h_` for host mem, `d_` for device memory.
 - CUDA Programming model is **primarily asynchronous** so that GPU computation performed on the GPU can be overlapped with host-device communication.
 - Usually CUDA program consists of *serial code* complemented by *parallel code*.
 
-![model](image.png)
+![model](./img/image.png)
 
 ### Managing Memory
 
@@ -75,7 +75,7 @@ Function to transfer data between host and device is `cudaMemcpy`, its function 
 cudaError_t cudaMemcpy (void* dst, const void* src, size_t count, cudaMemcpyKind kind)
 ```
 
-It copies specified byts from source mem area, pointed to by `src` to destindation mem area, pointed to by `dst`, with the direction specified by `kind`.
+It copies specified bytes from source mem area, pointed to by `src` to destination mem area, pointed to by `dst`, with the direction specified by `kind`.
 
 `kind` takes one of the following types:
 
