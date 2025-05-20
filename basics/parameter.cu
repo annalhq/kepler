@@ -1,22 +1,26 @@
 #include <iostream>
-#include <../common/book.h>
+#include "../common/book.h"
+#include <cuda_runtime.h>
 
-__global__ void kernel(int *a, int *b, int *c) {
-    *c = a+b;
+
+__global__ void add( int a, int b, int *c ) {
+    *c = a + b;
 }
 
-int main(void){
-     int c;
-     int *dev_c;
-     HANDLE_ERROR(cudaMalloc((void**)&dev_c, sizeof(int)));
+int main( void ) {
+    int c = 0;
+    int *dev_c;
+    HANDLE_ERROR( cudaMalloc( (void**)&dev_c, sizeof(int) ) );
 
-     add<<<1,1>>>(2, 1, dev_c);
+    add<<<1,1>>>( 2, 7, dev_c );
 
-     HANDLE_ERROR(cudaMemcpy(&c, dev_c, sizeof(int), cudaMemcpyDeviceToHost));
+    HANDLE_ERROR( cudaGetLastError() );
+    HANDLE_ERROR( cudaDeviceSynchronize() );
 
-     printf("2 + 1 = %d\n", c);
+    HANDLE_ERROR( cudaMemcpy( &c, dev_c, sizeof(int),
+                              cudaMemcpyDeviceToHost ) );
+    printf( "2 + 7 = %d\n", c );
+    HANDLE_ERROR( cudaFree( dev_c ) );
 
-     HANDLE_ERROR(cudaFree(dev_c));
-     
-     return 0;
+    return 0;
 }
