@@ -10,7 +10,7 @@ $$L = r\cdot0.21 + g\cdot0.72 + b\cdot0.07$$
 
 ![rgb-representation](./img/image-1.png)
 
-- In RGB representation, each pizel is stored as a tuple of (r,g,b) values.
+- In RGB representation, each pixel is stored as a tuple of (r,g,b) values.
 
 - The format of an image's row is (r g b) (r g b) ... (r g b)
 
@@ -34,8 +34,8 @@ In AdobeRGB color space valid combinations of the three colors are shown as inte
 3. **Luminosity** method is advanced version of the average method. It also averages the values but it forms a weighted average to account for human perception. We’re more sensitive to green than other colors, so green is weighted most heavily.
    $R\cdot0.21 + G\cdot0.72 + B\cdot0.07$
 
-   >[!NOTE]
-   >This luminosity formula is for ITU-R Recommendation BT. 709
+>[!NOTE]
+>This luminosity formula is for ITU-R Recommendation BT. 709
 
 4. **RGB2GRAY function**, as stated in *cvtColor() documentation*:
    $0.299\cdot R + 0.587\cdot G + 0.114\cdot B$
